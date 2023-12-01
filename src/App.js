@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          commit test number three
+          React app
         </a>
       </header>
     </div>
