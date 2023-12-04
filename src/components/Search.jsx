@@ -51,8 +51,12 @@ const SearchForm = styled.form`
     top:0;
     left:0;
     transition: 500ms;
+    width:30px;
     &.on{
-        border-color: #ffffff;
+        border: solid 1px #ffffff;
+        transition:300ms;
+        width:240px;
+        border-radius:4px;
     }
     .search-btn{
         color:#ffffff;

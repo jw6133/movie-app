@@ -7,7 +7,15 @@ import GlobalStyle from './styled/GlobalStyle';
 import Main from './pages/Main';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import NotFound from './pages/NotFound';
+import MainVideos from './components/MainVideos';
+import MovieList from './components/MovieList';
+import { Provider } from 'react-redux';
+import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
+import rootReducer from './store/reducer';
+import {thunk} from 'redux-thunk';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENTION_COMPOSE__ || compose;
+const store = createStore(rootReducer,composeEnhancers(applyMiddleware(thunk)))
 const router = createBrowserRouter([
   {
     path:'/',
@@ -28,6 +36,11 @@ root.render(
     <GlobalStyle/>
     {/* <App /> */}
     {/* <Main/> */}
+    <MainVideos/>
+    <Provider store={store}>
+    <MovieList/>
+    </Provider>
+
     <RouterProvider router={router}/>
   </React.StrictMode>
 );
