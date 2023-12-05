@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchActionMovies } from '../store';
+import { fetchComedyMovies } from '../store';
 import { useDispatch, useSelector } from 'react-redux';
 import {styled} from 'styled-components';
 import OverView from './OverView';
@@ -14,11 +14,11 @@ import 'swiper/css/pagination'; //스와이퍼 도트리스트 css
 import '../styled/swiperCustomCss.css';
 
 
-function Action() {
+function Comedy() {
     const [isClick,setIsClick] = useState(false);
     const dispatch = useDispatch(); //생성된 action에 state에 접근
     useEffect(()=>{
-        dispatch(fetchActionMovies())
+        dispatch(fetchComedyMovies())
     },[])
     //console.log(fetchActionMovies());
 
@@ -35,7 +35,7 @@ function Action() {
     return (
         <div>
             <MovieContainer>
-                <MovieTitle>액션</MovieTitle>
+                <MovieTitle>코미디</MovieTitle>
                 <Swiper
                     spaceBetween={10}//슬라이드 간의 여백(gap)
                     slidesPerView={5} //한번에 보여질 슬라이드 아이템의 갯수
@@ -82,4 +82,4 @@ const MovieItem = styled.div`
 `
 
 
-export default Action;
+export default Comedy;

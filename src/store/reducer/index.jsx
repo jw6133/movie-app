@@ -25,6 +25,7 @@ dispatch : store에서 action에 전달하기 위해 제공하는 하나의 방�
 */
 import {combineReducers} from "redux"; //import된것은 {}괄호로 감싸주기 !!!!중요!!!!
 import {FETCH_ACTION_MOVIES} from '../';
+import { FETCH_COMEDY_MOVIES } from "../";
 
 const actionMovieReducer = (state=[],action)=>{
     switch(action.type){
@@ -37,9 +38,21 @@ const actionMovieReducer = (state=[],action)=>{
             return state;
     }
 }
+
+const comedyMovieReducer = (state=[],comedy)=>{
+    switch(comedy.type){
+        case FETCH_COMEDY_MOVIES:
+            return{
+                ...state,
+                movies:comedy.data
+            }
+        default:
+            return state;
+    }
+}
 const rootReducer = combineReducers({
     action : actionMovieReducer,
-
+    comedy : comedyMovieReducer,
 })
 //여러개의 reducer를 하나의 store에서 실행가능하도록 해주는 메서드
 //장르마다 불러올 reducer가 다르기 때문에
