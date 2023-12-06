@@ -22,7 +22,7 @@ function Comedy() {
     },[])
     //console.log(fetchActionMovies());
 
-    const actionData = useSelector((state)=>state.action.movies, []) || [];
+    const actionData = useSelector((state)=>state.comedy.movies, []) || [];
     // console.log(actionData.results);
 
     const overViewEvent = (el)=>{
