@@ -13,6 +13,7 @@ import 'swiper/css/navigation'; //스와이퍼 좌우버튼 css
 import 'swiper/css/pagination'; //스와이퍼 도트리스트 css
 import '../styled/swiperCustomCss.css';
 import MovieCard from './MovieCard';
+import { fetchGenres } from '../api/api';
 
 
 function Action() {
@@ -38,20 +39,12 @@ function Action() {
 
     //장르 추가
     useEffect(()=>{
-        const fetchGenres = async ()=>{
-            try{
-                const res = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=1105341b426cb5e8ab3e1d7689a8a4a5&language=ko-KR');
-                const data = await res.json();
-                const genreMap = data.genres.reduce((acc,genre)=>{
-                    acc[genre.id] =genre.name;
-                    return acc
-                },{});
-                setGenres(genreMap);
-            }catch(error){
-                console.error(error);
-            }
+        const fetchActionMovieGenres = async()=>{
+            dispatch(fetchActionMovies());
+            const genres = await fetchGenres();
+            setGenres(genres);
         }
-        fetchGenres();
+        fetchActionMovieGenres();
     },[])
     
     const getGenreText = (genreId)=>{
